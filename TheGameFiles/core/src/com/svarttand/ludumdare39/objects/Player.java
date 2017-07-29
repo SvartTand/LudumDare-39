@@ -1,26 +1,31 @@
 package com.svarttand.ludumdare39.objects;
 
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Player {
 	
 	public static final float MAX_POWER = 100;
 	public static final float MAX_HP = 100;
-	public static final float MAX_ROTATION = 360;
+	public static final float MAX_SPEED = 360;
 	
-	private static final float TURN_SPEED = 100;
+	private static final float ACCELERATION = 300;
+	private static final float FRICTION = 150;
+	private static final float GRAVITY = 400;
 	
 	private Vector2 velocity;
 	private String texturePath;
 	private Vector2 position;
 	private Vector2 angles;
 	private float rotation;
+	private float mass;
 	
 	private float power;
 	private float hp;
+	
+	private Rectangle bounds;
 	
 	
 	
@@ -28,10 +33,12 @@ public class Player {
 		velocity = new Vector2(0,0);
 		position = new Vector2(50,50);
 		angles = new Vector2(0,0);
-		texturePath = "Ship";
+		texturePath = "Dude";
 		rotation = 0;
 		power = MAX_POWER;
-		hp = MAX_HP;		
+		hp = MAX_HP;	
+		bounds = new Rectangle(50, 50, 16, 32);
+		mass = 10;
 	}
 	
 	public String getTexturePath() {
@@ -55,34 +62,44 @@ public class Player {
 
 
 	public void update(float delta){
-		
-		position.add(delta * velocity.x,delta * velocity.y);
-		//System.out.println(position.x + ", " + position.y);
+		if (velocity.x < 0) {
+			velocity.x += FRICTION*delta;
+		}
+		if (velocity.x > 0) {
+			velocity.x -= FRICTION*delta;
+		}
+		if (position.y > 50) {
+			velocity.y -= GRAVITY *delta;
+		}
+		if (position.y < 50) {
+			position.y = 50;
+		}
+		position.add(velocity.x *delta, velocity.y*delta);
+		bounds.setPosition(position);
 	}
 	
 	public void upPressed(float delta){
-		velocity.add(-100*delta* angles.x, -100*delta*angles.y);
+		if (position.y <= 50) {
+			velocity.y = 200;
+		}
+		
 	}
 	public void downPressed(float delta){
-		velocity.add(100*delta*angles.x, 100*delta*angles.y);
+		
 	}
 	
 	public void leftPressed(float delta){
-		rotation -= TURN_SPEED * delta;
-		if (rotation < 0) {
-			rotation += 360;
+		if (velocity.x > MAX_SPEED) {
+			velocity.x += -ACCELERATION * delta;
 		}
-		angles.x = (MathUtils.cosDeg(rotation-90));
-		angles.y = (MathUtils.sinDeg(rotation-90));
+		
 	}
 	
 	public void rightPressed(float delta){
-		rotation += TURN_SPEED * delta;
-		if (rotation > MAX_ROTATION) {
-			rotation -= MAX_ROTATION;
+		if (velocity.x < MAX_SPEED) {
+			velocity.x += ACCELERATION * delta;
 		}
-		angles.x = (MathUtils.cosDeg(rotation-90));
-		angles.y = (MathUtils.sinDeg(rotation-90));
+		
 	}
 	
 	

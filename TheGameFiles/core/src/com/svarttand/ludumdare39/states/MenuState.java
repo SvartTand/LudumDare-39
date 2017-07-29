@@ -58,7 +58,6 @@ public class MenuState extends State{
 	@Override
 	public void dispose() {
 		hud.dispose();
-		
 	}
 
 	@Override

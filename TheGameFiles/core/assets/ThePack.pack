@@ -3,23 +3,65 @@ ThePack.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-PlanetPlaceholder
+Road
   rotate: false
-  xy: 1, 35
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-Ship
-  rotate: false
-  xy: 1, 1
+  xy: 1, 19
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
+Ship
+  rotate: false
+  xy: 35, 19
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+ShipRed1
+  rotate: false
+  xy: 69, 11
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
+ShipRed2
+  rotate: false
+  xy: 95, 11
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
+ShipRed3
+  rotate: false
+  xy: 121, 11
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
+ShipRed4
+  rotate: false
+  xy: 147, 11
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
+ShipRed5
+  rotate: false
+  xy: 173, 11
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
+Dude
+  rotate: false
+  xy: 199, 19
+  size: 16, 32
+  orig: 16, 32
+  offset: 0, 0
+  index: -1
 Button
   rotate: false
-  xy: 131, 147
+  xy: 1, 1
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
