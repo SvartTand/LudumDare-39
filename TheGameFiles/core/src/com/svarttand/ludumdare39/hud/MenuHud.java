@@ -53,7 +53,7 @@ public class MenuHud {
 
 	     playButton = new TextButton("PLAY", style);
 	     playButton.sizeBy(64,32);
-	     playButton.setPosition((Application.V_WIDTH*0.5f-playButton.getWidth()*0.5f), Application.V_HEIGHT*0.5f-playButton.getHeight());
+	     playButton.setPosition((Application.V_WIDTH*0.5f-playButton.getWidth()*0.5f), Application.V_HEIGHT*0.3f-playButton.getHeight());
 	     playButton.addListener( new ClickListener() {
 	         @Override
 	         public void clicked(InputEvent event, float x, float y) {

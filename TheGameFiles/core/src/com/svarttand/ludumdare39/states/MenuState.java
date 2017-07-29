@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.ludumdare39.Application;
@@ -14,6 +15,7 @@ public class MenuState extends State{
 	private Viewport viewport;
 	private TextureAtlas atlas;
 	private MenuHud hud;
+	private TextureRegion backGround;
 
 	public MenuState(GameStateManager gsm) {
 		super(gsm);
@@ -23,7 +25,7 @@ public class MenuState extends State{
         viewport.apply();
         atlas = gsm.assetManager.get(LoadingState.ATLAS_PATH, TextureAtlas.class);
         hud = new MenuHud(viewport, cam, atlas, this);
-		
+		backGround = atlas.findRegion("MainBackGround");
 	}
 	
 	public void playPressed(){
@@ -50,6 +52,7 @@ public class MenuState extends State{
         Gdx.gl.glClearColor(0, 0, 0, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
+        batch.draw(backGround, 0, 0);
         batch.end();
         hud.getStage().draw();
 		
