@@ -1,0 +1,26 @@
+
+ThePack.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+PlanetPlaceholder
+  rotate: false
+  xy: 1, 35
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+Ship
+  rotate: false
+  xy: 1, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Button
+  rotate: false
+  xy: 131, 147
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1

@@ -7,23 +7,19 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.ludumdare39.Application;
-import com.svarttand.ludumdare39.hud.MenuHud;
 
-public class MenuState extends State{
+public class PlayState extends State{
 	
 	private Viewport viewport;
 	private TextureAtlas atlas;
-	private MenuHud hud;
 
-	public MenuState(GameStateManager gsm) {
+	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT, cam);
         cam.position.set(Application.V_WIDTH*0.5f, Application.V_HEIGHT*0.5f,0);
         cam.update();
         viewport.apply();
         atlas = gsm.assetManager.get(LoadingState.ATLAS_PATH, TextureAtlas.class);
-        hud = new MenuHud(viewport, cam, atlas);
-		
 	}
 
 	@Override
@@ -46,20 +42,18 @@ public class MenuState extends State{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.end();
-        hud.getStage().draw();
 		
 	}
 
 	@Override
 	public void dispose() {
-		hud.dispose();
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void resize(int width, int height) {
 		viewport.update(width, height);
-		hud.resize(width, height);
 		
 	}
 

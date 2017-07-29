@@ -12,7 +12,7 @@ import com.svarttand.ludumdare39.Application;
 public class LoadingState extends State {
 		
 		private static final int AUDIO_AMOUNT = 0;
-		private static final String AtlasPath = "uihisud";
+		public static final String ATLAS_PATH = "ThePack.pack";
 	 	private Viewport viewport;
 	    private boolean loaded;
 	    private int counter;
@@ -40,7 +40,7 @@ public class LoadingState extends State {
 	        for (int i = 0; i < audioPaths.length; i++) {
 	            gsm.assetManager.load(audioPaths[i], Sound.class);
 	        }
-	        gsm.assetManager.load(AtlasPath, TextureAtlas.class);
+	        gsm.assetManager.load(ATLAS_PATH, TextureAtlas.class);
 	        loaded = true;
 	    }
 

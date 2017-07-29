@@ -8,8 +8,8 @@ import com.svarttand.ludumdare39.states.GameStateManager;
 import com.svarttand.ludumdare39.states.LoadingState;
 
 public class Application extends ApplicationAdapter {
-	public static final int V_WIDTH = 100;
-	public static final int V_HEIGHT = 100;
+	public static final int V_WIDTH = 600;
+	public static final int V_HEIGHT = 600;
 	private SpriteBatch batch;
 	private GameStateManager gsm;
 	private AssetManager assetManager;
