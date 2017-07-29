@@ -22,13 +22,18 @@ public class MenuState extends State{
         cam.update();
         viewport.apply();
         atlas = gsm.assetManager.get(LoadingState.ATLAS_PATH, TextureAtlas.class);
-        hud = new MenuHud(viewport, cam, atlas);
+        hud = new MenuHud(viewport, cam, atlas, this);
 		
+	}
+	
+	public void playPressed(){
+		gsm.set(new PlayState(gsm, atlas));
 	}
 
 	@Override
 	protected void handleInput(float delta) {
-		// TODO Auto-generated method stub
+		
+		
 		
 	}
 

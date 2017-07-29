@@ -12,6 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.ludumdare39.Application;
+import com.svarttand.ludumdare39.states.GameStateManager;
+import com.svarttand.ludumdare39.states.MenuState;
+import com.svarttand.ludumdare39.states.PlayState;
 
 public class MenuHud {
 	
@@ -29,7 +32,7 @@ public class MenuHud {
 	 
 	 private int pressed;
 	
-	public MenuHud(Viewport viewport, OrthographicCamera cam, TextureAtlas atlas){
+	public MenuHud(Viewport viewport, OrthographicCamera cam, TextureAtlas atlas, final MenuState state){
 		this.viewport = viewport;
 		this.camera = cam;
 		this.atlas = atlas;
@@ -56,6 +59,7 @@ public class MenuHud {
 	         public void clicked(InputEvent event, float x, float y) {
 	             System.out.println("PLAY!!");
 	             pressed = 1;
+	             state.playPressed();
 	            }
 	        });
 	     
@@ -75,7 +79,7 @@ public class MenuHud {
 
 	 public void dispose() {
 	     stage.dispose();
-	     skin.dispose();
+	     //skin.dispose();
 	 }
 
 	 public void resize(int width, int height) {
