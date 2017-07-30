@@ -51,9 +51,9 @@ public class PlayHud {
 		renderer.setProjectionMatrix(camera.combined);
 		renderer.begin(ShapeType.Filled);
 		renderer.setColor(Color.BLACK);
-		renderer.rect(6, 6, Player.MAX_HP, 15);
+		renderer.rect(Application.V_WIDTH*0.5f - Player.MAX_HP*0.5f, 6, Player.MAX_HP, 15);
 		renderer.setColor(Color.FIREBRICK);
-		renderer.rect(6, 6, hp, 15);
+		renderer.rect(Application.V_WIDTH*0.5f - Player.MAX_HP*0.5f, 6, hp, 15);
 		
 		
 		

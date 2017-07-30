@@ -59,7 +59,7 @@ public class MenuHud {
 
 
 	     playButton = new TextButton("PLAY", style);
-	     playButton.setPosition((Application.V_WIDTH*0.85f-playButton.getWidth()*0.5f), Application.V_HEIGHT*0.92f-playButton.getHeight());
+	     playButton.setPosition((Application.V_WIDTH*0.76f-playButton.getWidth()*0.5f), Application.V_HEIGHT*0.92f-playButton.getHeight());
 	     playButton.addListener( new ClickListener() {
 	         @Override
 	         public void clicked(InputEvent event, float x, float y) {
@@ -70,7 +70,7 @@ public class MenuHud {
 	        });
 	     
 	     exitButton = new TextButton("EXIT", style);
-	     exitButton.setPosition((Application.V_WIDTH*0.85f-exitButton.getWidth()*0.5f), Application.V_HEIGHT*0.82f-exitButton.getHeight());
+	     exitButton.setPosition((Application.V_WIDTH*0.76f-exitButton.getWidth()*0.5f), Application.V_HEIGHT*0.82f-exitButton.getHeight());
 	     exitButton.addListener( new ClickListener() {
 	         @Override
 	         public void clicked(InputEvent event, float x, float y) {
@@ -81,7 +81,7 @@ public class MenuHud {
 	        });
 	     
 	     easyButton = new TextButton("EASY", style);
-	     easyButton.setPosition((Application.V_WIDTH*0.85f-easyButton.getWidth()*0.5f), Application.V_HEIGHT*0.6f-easyButton.getHeight());
+	     easyButton.setPosition((Application.V_WIDTH*0.76f-easyButton.getWidth()*0.5f), Application.V_HEIGHT*0.6f-easyButton.getHeight());
 	     easyButton.addListener( new ClickListener() {
 	         @Override
 	         public void clicked(InputEvent event, float x, float y) {
@@ -96,7 +96,7 @@ public class MenuHud {
 	        });
 	     
 	     mediumButton = new TextButton("MEDIUM", style);
-	     mediumButton.setPosition((Application.V_WIDTH*0.85f-mediumButton.getWidth()*0.5f), Application.V_HEIGHT*0.5f-mediumButton.getHeight());
+	     mediumButton.setPosition((Application.V_WIDTH*0.76f-mediumButton.getWidth()*0.5f), Application.V_HEIGHT*0.5f-mediumButton.getHeight());
 	     mediumButton.addListener( new ClickListener() {
 	         @Override
 	         public void clicked(InputEvent event, float x, float y) {
@@ -111,7 +111,7 @@ public class MenuHud {
 	        });
 	     
 	     hardButton = new TextButton("HARD", style);
-	     hardButton.setPosition((Application.V_WIDTH*0.85f-hardButton.getWidth()*0.5f), Application.V_HEIGHT*0.4f-hardButton.getHeight());
+	     hardButton.setPosition((Application.V_WIDTH*0.76f-hardButton.getWidth()*0.5f), Application.V_HEIGHT*0.4f-hardButton.getHeight());
 	     hardButton.addListener( new ClickListener() {
 	         @Override
 	         public void clicked(InputEvent event, float x, float y) {
@@ -126,7 +126,7 @@ public class MenuHud {
 	        });
 	     
 	     insaneButton = new TextButton("INSANE!", style);
-	     insaneButton.setPosition((Application.V_WIDTH*0.85f-insaneButton.getWidth()*0.5f), Application.V_HEIGHT*0.3f-insaneButton.getHeight());
+	     insaneButton.setPosition((Application.V_WIDTH*0.76f-insaneButton.getWidth()*0.5f), Application.V_HEIGHT*0.3f-insaneButton.getHeight());
 	     insaneButton.addListener( new ClickListener() {
 	         @Override
 	         public void clicked(InputEvent event, float x, float y) {

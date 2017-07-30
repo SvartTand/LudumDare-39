@@ -112,9 +112,9 @@ public class PlayState extends State{
         	if (i <dificuly.getStones()) {
         		obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), Player.GROUND + Application.V_HEIGHT), ObstacleEnum.STONE, rn, atlas));
 			}else if(i<dificuly.getStones() + dificuly.getBlue()){
-				obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), Player.GROUND), ObstacleEnum.MOVING_CAR, rn,atlas));
+				obstacleList.add(new Obstacle(new Vector2((i+2)  * (MIN_OBSTACLE_GAP + j), Player.GROUND), ObstacleEnum.MOVING_CAR, rn,atlas));
 			}else{
-				obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), Player.GROUND), ObstacleEnum.CAR, rn, atlas));
+				obstacleList.add(new Obstacle(new Vector2((i+2)  * (MIN_OBSTACLE_GAP + j), Player.GROUND), ObstacleEnum.CAR, rn, atlas));
 			}
 			
 		}

@@ -26,7 +26,7 @@ public class MenuState extends State{
         viewport.apply();
         this.atlas = atlas;
         hud = new MenuHud(viewport, cam, atlas, gsm, gsm.assetManager.get("Sound/10.wav", Sound.class));
-		backGround = atlas.findRegion("MainBackGround");
+		backGround = atlas.findRegion("MainMenuBackGround");
 	}
 	
 
