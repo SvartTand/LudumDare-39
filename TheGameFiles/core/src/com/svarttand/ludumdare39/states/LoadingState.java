@@ -11,7 +11,7 @@ import com.svarttand.ludumdare39.Application;
 
 public class LoadingState extends State {
 		
-		private static final int AUDIO_AMOUNT = 0;
+		public static final int AUDIO_AMOUNT = 11;
 		public static final String ATLAS_PATH = "ThePack.pack";
 	 	private Viewport viewport;
 	    private boolean loaded;
@@ -30,7 +30,7 @@ public class LoadingState extends State {
 	    	
 	    	audioPaths = new String[AUDIO_AMOUNT];
 	        for (int i = 0; i < AUDIO_AMOUNT; i++) {
-	            audioPaths[i] = i + ".wav";
+	            audioPaths[i] = "Sound/"+ i + ".wav";
 	        }
 	      
 	    }

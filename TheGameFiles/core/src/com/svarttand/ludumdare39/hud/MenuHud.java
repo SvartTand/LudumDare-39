@@ -21,7 +21,7 @@ public class MenuHud {
 	private OrthographicCamera camera;
 	private Stage stage;
 	private Viewport viewport;
-	private TextureAtlas atlas;
+
 	
 	 private TextButton.TextButtonStyle style;
 	 private Skin skin;
@@ -35,7 +35,7 @@ public class MenuHud {
 	public MenuHud(Viewport viewport, OrthographicCamera cam, TextureAtlas atlas, final MenuState state){
 		this.viewport = viewport;
 		this.camera = cam;
-		this.atlas = atlas;
+
 		stage = new Stage(viewport);
 		
 		 cam.update();

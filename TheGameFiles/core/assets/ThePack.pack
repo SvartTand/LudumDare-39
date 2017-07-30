@@ -38,114 +38,121 @@ CarObstacle
   orig: 32, 32
   offset: 0, 0
   index: -1
-Ship
+Rock
   rotate: false
   xy: 939, 219
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-ShipRed1
+Ship
   rotate: false
-  xy: 35, 9
-  size: 24, 40
-  orig: 24, 40
+  xy: 35, 17
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
   index: -1
-ShipRed2
+ShipRed1
   rotate: false
   xy: 905, 75
   size: 24, 40
   orig: 24, 40
   offset: 0, 0
   index: -1
-ShipRed3
+ShipRed2
   rotate: false
   xy: 939, 177
   size: 24, 40
   orig: 24, 40
   offset: 0, 0
   index: -1
-ShipRed4
-  rotate: false
-  xy: 61, 9
-  size: 24, 40
-  orig: 24, 40
-  offset: 0, 0
-  index: -1
-ShipRed5
+ShipRed3
   rotate: false
   xy: 939, 135
   size: 24, 40
   orig: 24, 40
   offset: 0, 0
   index: -1
+ShipRed4
+  rotate: false
+  xy: 973, 211
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
+ShipRed5
+  rotate: false
+  xy: 999, 211
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
 Dude
   rotate: false
-  xy: 973, 219
+  xy: 69, 17
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning1
   rotate: false
-  xy: 965, 185
+  xy: 87, 17
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning2
   rotate: false
-  xy: 87, 17
+  xy: 105, 17
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning3
   rotate: false
-  xy: 991, 219
+  xy: 123, 17
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning4
   rotate: false
-  xy: 965, 151
+  xy: 141, 17
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning5
   rotate: false
-  xy: 983, 185
+  xy: 159, 17
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeStanding1
   rotate: false
-  xy: 105, 17
+  xy: 177, 17
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeStanding2
   rotate: false
-  xy: 983, 151
+  xy: 195, 17
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeStanding3
   rotate: false
-  xy: 123, 17
+  xy: 213, 17
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeStanding4
   rotate: false
-  xy: 141, 17
+  xy: 231, 17
   size: 16, 32
   orig: 16, 32
   offset: 0, 0

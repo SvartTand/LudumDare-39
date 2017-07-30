@@ -119,7 +119,7 @@ public class Player {
 	}
 	
 	public void leftPressed(float delta){
-		if (velocity.x > MAX_SPEED) {
+		if (velocity.x > -MAX_SPEED) {
 			velocity.x += -ACCELERATION * delta;
 		}
 		

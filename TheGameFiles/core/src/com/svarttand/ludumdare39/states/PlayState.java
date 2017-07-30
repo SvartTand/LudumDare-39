@@ -1,9 +1,11 @@
 package com.svarttand.ludumdare39.states;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -22,6 +24,7 @@ public class PlayState extends State{
 	
 	private static final int GROUND_SIZE = 32;
 	private static final int OBSTACLE_GAP = 400;
+	private static final int MIN_OBSTACLE_GAP = 200;
 	private Viewport viewport;
 	private TextureAtlas atlas;
 	
@@ -35,8 +38,13 @@ public class PlayState extends State{
 	private float bg1Pos;
 	private float bg2Pos;
 
+	private Random rn;
+	
+	private ArrayList<Sound> audioList;
+	
 	public PlayState(GameStateManager gsm, TextureAtlas atlas) {
 		super(gsm);
+		
 		player = new Player(atlas);
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT, cam);
 		cam.position.x = player.getPosition().x;
@@ -51,12 +59,21 @@ public class PlayState extends State{
         backGround2 = atlas.findRegion("CityBG");
         bg2Pos = backGround2.getRegionWidth();
         
+        audioList = new ArrayList<Sound>();
+        for (int i = 0; i < LoadingState.AUDIO_AMOUNT; i++) {
+			audioList.add(gsm.assetManager.get("Sound/"+ i + ".wav",Sound.class));
+		}
+        audioList.get(1).play();
         
         groundList = new ArrayList<Ground>();
         obstacleList = new ArrayList<Obstacle>();
-        
+    	rn = new Random();
         for (int i = 0; i < 3; i++) {
-			obstacleList.add(new Obstacle(new Vector2(i  * OBSTACLE_GAP, player.GROUND), ObstacleEnum.CAR));
+
+        	int n = OBSTACLE_GAP - MIN_OBSTACLE_GAP + 1;
+        	int j = rn.nextInt() % n;
+        	
+			obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), player.GROUND + 150), ObstacleEnum.STONE));
 		}
         
         for (int i = 0; i < (GROUND_SIZE*2 + Application.V_WIDTH)/GROUND_SIZE; i++) {
@@ -102,8 +119,11 @@ public class PlayState extends State{
 			}
 		}
 		for (int i = 0; i < obstacleList.size(); i++) {
+			obstacleList.get(i).update(delta);
 			if (cam.position.x - (cam.viewportWidth/2) > obstacleList.get(i).getPosition().x + obstacleList.get(i).getBounds().width){
-				obstacleList.get(i).setPosition(obstacleList.get(i).getPosition().x + obstacleList.size() * OBSTACLE_GAP);
+				int n = OBSTACLE_GAP - MIN_OBSTACLE_GAP + 1;
+	        	int j = rn.nextInt() % n;
+				obstacleList.get(i).setPosition(obstacleList.get(i).getPosition().x + obstacleList.size() * MIN_OBSTACLE_GAP + j);
 				System.out.println("It changed" + obstacleList.size());
 			}
 		}
