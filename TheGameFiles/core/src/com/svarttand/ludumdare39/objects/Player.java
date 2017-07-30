@@ -2,6 +2,7 @@ package com.svarttand.ludumdare39.objects;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Circle;
@@ -53,6 +54,14 @@ public class Player {
 		
 	}
 	
+	public void takeDmg(){
+		hp -= 0.5;
+	}
+	
+	public float getHp(){
+		return hp;
+	}
+	
 	public TextureRegion getTexturePath() {
 		return currentAnimation.getFrame();
 	}
@@ -100,17 +109,18 @@ public class Player {
 		position.add(velocity.x *delta, velocity.y*delta);
 		bounds.setPosition(position);
 		
-		for (int i = 0; i < obstacles.size(); i++) {
-			if (obstacles.get(i).getBounds().overlaps(bounds)) {
-				System.out.println("DEAD!!");
-			}
-		}
+		
 			
 	}
 	
-	public void upPressed(float delta){
+	public Rectangle getBounds(){
+		return bounds;
+	}
+	
+	public void upPressed(float delta, Sound jump){
 		if (position.y <= GROUND) {
 			velocity.y = 200;
+			jump.play();
 		}
 		
 	}
@@ -130,6 +140,11 @@ public class Player {
 			velocity.x += ACCELERATION * delta;
 		}
 		
+	}
+
+	public float getVelocity() {
+		// TODO Auto-generated method stub
+		return velocity.x;
 	}
 	
 	

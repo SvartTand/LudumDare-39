@@ -8,23 +8,23 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.ludumdare39.Application;
-import com.svarttand.ludumdare39.hud.MenuHud;
+import com.svarttand.ludumdare39.hud.GameOverHud;
 
-public class MenuState extends State{
-	
+public class GameOverState extends State{
+
 	private Viewport viewport;
 	private TextureAtlas atlas;
-	private MenuHud hud;
+	private GameOverHud hud;
 	private TextureRegion backGround;
-
-	public MenuState(GameStateManager gsm, TextureAtlas atlas) {
+	
+	public GameOverState(GameStateManager gsm, TextureAtlas atlas, float distance) {
 		super(gsm);
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT, cam);
         cam.position.set(Application.V_WIDTH*0.5f, Application.V_HEIGHT*0.5f,0);
         cam.update();
         viewport.apply();
         this.atlas = atlas;
-        hud = new MenuHud(viewport, cam, atlas, this);
+        hud = new GameOverHud(viewport, cam, atlas, gsm, distance);
 		backGround = atlas.findRegion("MainBackGround");
 	}
 	
@@ -69,5 +69,4 @@ public class MenuState extends State{
 		hud.resize(width, height);
 		
 	}
-
 }

@@ -5,161 +5,175 @@ filter: Nearest,Nearest
 repeat: none
 CityBG
   rotate: false
-  xy: 1, 51
+  xy: 1, 305
   size: 600, 200
   orig: 600, 200
   offset: 0, 0
   index: -1
+FieldBG
+  rotate: false
+  xy: 1, 103
+  size: 350, 200
+  orig: 350, 200
+  offset: 0, 0
+  index: -1
+PowerBG
+  rotate: false
+  xy: 603, 305
+  size: 350, 200
+  orig: 350, 200
+  offset: 0, 0
+  index: -1
 MainBackGround
   rotate: false
-  xy: 603, 51
+  xy: 353, 103
   size: 300, 200
   orig: 300, 200
   offset: 0, 0
   index: -1
 Road
   rotate: false
-  xy: 905, 151
+  xy: 1, 1
   size: 32, 100
   orig: 32, 100
   offset: 0, 0
   index: -1
 RoadCity
   rotate: false
-  xy: 1, 1
+  xy: 955, 457
   size: 32, 48
   orig: 32, 48
   offset: 0, 0
   index: -1
 CarObstacle
   rotate: false
-  xy: 905, 117
+  xy: 655, 271
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Rock
   rotate: false
-  xy: 939, 219
+  xy: 35, 69
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Ship
   rotate: false
-  xy: 35, 17
+  xy: 955, 423
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 ShipRed1
   rotate: false
-  xy: 905, 75
+  xy: 989, 465
   size: 24, 40
   orig: 24, 40
   offset: 0, 0
   index: -1
 ShipRed2
   rotate: false
-  xy: 939, 177
+  xy: 655, 229
   size: 24, 40
   orig: 24, 40
   offset: 0, 0
   index: -1
 ShipRed3
   rotate: false
-  xy: 939, 135
+  xy: 35, 27
   size: 24, 40
   orig: 24, 40
   offset: 0, 0
   index: -1
 ShipRed4
   rotate: false
-  xy: 973, 211
+  xy: 955, 381
   size: 24, 40
   orig: 24, 40
   offset: 0, 0
   index: -1
 ShipRed5
   rotate: false
-  xy: 999, 211
+  xy: 989, 423
   size: 24, 40
   orig: 24, 40
   offset: 0, 0
   index: -1
 Dude
   rotate: false
-  xy: 69, 17
+  xy: 689, 271
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning1
   rotate: false
-  xy: 87, 17
+  xy: 69, 69
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning2
   rotate: false
-  xy: 105, 17
+  xy: 655, 195
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning3
   rotate: false
-  xy: 123, 17
+  xy: 681, 237
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning4
   rotate: false
-  xy: 141, 17
+  xy: 61, 35
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning5
   rotate: false
-  xy: 159, 17
+  xy: 955, 347
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeStanding1
   rotate: false
-  xy: 177, 17
+  xy: 981, 389
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeStanding2
   rotate: false
-  xy: 195, 17
+  xy: 707, 271
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeStanding3
   rotate: false
-  xy: 213, 17
+  xy: 87, 69
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeStanding4
   rotate: false
-  xy: 231, 17
+  xy: 655, 161
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 Button
   rotate: false
-  xy: 905, 57
+  xy: 35, 9
   size: 16, 16
   orig: 16, 16
   offset: 0, 0

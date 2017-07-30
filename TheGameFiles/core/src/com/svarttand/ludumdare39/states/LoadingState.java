@@ -1,6 +1,7 @@
 package com.svarttand.ludumdare39.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -38,7 +39,12 @@ public class LoadingState extends State {
 
 	    private void load(){
 	        for (int i = 0; i < audioPaths.length; i++) {
-	            gsm.assetManager.load(audioPaths[i], Sound.class);
+	        	if (i < 9) {
+	        		gsm.assetManager.load(audioPaths[i], Music.class);
+				}else{
+					gsm.assetManager.load(audioPaths[i], Sound.class);
+				}
+	            
 	        }
 	        gsm.assetManager.load(ATLAS_PATH, TextureAtlas.class);
 	        loaded = true;
@@ -57,8 +63,8 @@ public class LoadingState extends State {
 	        System.out.println(counter++);
 	        gsm.assetManager.update();
 	        if (gsm.assetManager.getProgress() >= 1){
-	            
-	            gsm.set(new MenuState(gsm));
+	        	
+	            gsm.set(new MenuState(gsm,gsm.assetManager.get(LoadingState.ATLAS_PATH, TextureAtlas.class)));
 	            dispose();
 	            
 	        }
