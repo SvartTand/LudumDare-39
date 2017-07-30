@@ -16,13 +16,11 @@ public class LoadingState extends State {
 		public static final String ATLAS_PATH = "ThePack.pack";
 	 	private Viewport viewport;
 	    private boolean loaded;
-	    private int counter;
 	    private String[] audioPaths;
 
 	    public LoadingState(GameStateManager gsm) {
 	        super(gsm);
 	        viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT, cam);
-	        counter = 0;
 	        loaded = false;
 	        makeAudioPaths();
 	    }
@@ -31,7 +29,14 @@ public class LoadingState extends State {
 	    	
 	    	audioPaths = new String[AUDIO_AMOUNT];
 	        for (int i = 0; i < AUDIO_AMOUNT; i++) {
-	            audioPaths[i] = "Sound/"+ i + ".wav";
+	        	if (i >= 1 && i <= 8) {
+	        		audioPaths[i] = "Sound/"+ i + ".mp3";
+	        		System.out.println("Sound/"+ i + ".mp3");
+				}else{
+					audioPaths[i] = "Sound/"+ i + ".wav";
+					System.out.println("Sound/"+ i + ".wav");
+				}
+	            
 	        }
 	      
 	    }
@@ -60,7 +65,6 @@ public class LoadingState extends State {
 	        if (!loaded){
 	            load();
 	        }
-	        System.out.println(counter++);
 	        gsm.assetManager.update();
 	        if (gsm.assetManager.getProgress() >= 1){
 	        	

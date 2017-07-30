@@ -93,8 +93,13 @@ public class PlayState extends State{
         audioList = new ArrayList<Sound>();
         musicList = new ArrayList<Music>();
         for (int i = 0; i < LoadingState.AUDIO_AMOUNT; i++) {
-        	if (i < 9) {
-        		musicList.add(gsm.assetManager.get("Sound/"+ i + ".wav",Music.class));
+        	if (i <= 8 ) {
+        		if (i == 0) {
+        			musicList.add(gsm.assetManager.get("Sound/"+ i + ".wav",Music.class));
+				}else {
+					musicList.add(gsm.assetManager.get("Sound/"+ i + ".mp3",Music.class));
+				}
+        		
 			}else{
 				audioList.add(gsm.assetManager.get("Sound/"+ i + ".wav",Sound.class));
 			}
