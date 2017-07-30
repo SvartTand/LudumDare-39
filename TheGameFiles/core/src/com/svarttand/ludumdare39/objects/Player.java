@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.svarttand.ludumdare39.misc.Animation;
+import com.svarttand.ludumdare39.misc.Explosion;
 
 public class Player {
 	
@@ -41,6 +42,8 @@ public class Player {
 	
 	private float timeLoop;
 	
+	private boolean isHit;
+	
 	public Player(TextureAtlas atlas){
 		
 		velocity = new Vector2(0,0);
@@ -62,6 +65,7 @@ public class Player {
 		if (timeLoop >= TIME) {
 			hurtSound.play();
 			timeLoop = 0;
+			isHit = true;
 		}
 		hp -= 0.5;
 		
@@ -91,8 +95,11 @@ public class Player {
 	}
 
 
-	public void update(float delta, ArrayList<Obstacle> obstacles){
-		
+	public void update(float delta, ArrayList<Obstacle> obstacles, ArrayList<Explosion> explosions, TextureAtlas atlas){
+		if (isHit) {
+			explosions.add(new Explosion(position, "Blood", atlas, 6, 24, 40, false));
+			isHit = false;
+		}
 		timeLoop += delta;
 		currentAnimation.update(delta);
 		if (velocity.x <= 10 && velocity.x >= -10) {
@@ -154,6 +161,11 @@ public class Player {
 	public float getVelocity() {
 		// TODO Auto-generated method stub
 		return velocity.x;
+	}
+
+	public boolean isHit() {
+		// TODO Auto-generated method stub
+		return isHit;
 	}
 	
 	

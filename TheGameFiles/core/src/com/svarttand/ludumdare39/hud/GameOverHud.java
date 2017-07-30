@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.ludumdare39.Application;
+import com.svarttand.ludumdare39.level.Dificuly;
 import com.svarttand.ludumdare39.states.GameOverState;
 import com.svarttand.ludumdare39.states.GameStateManager;
 import com.svarttand.ludumdare39.states.MenuState;
@@ -39,7 +40,7 @@ public class GameOverHud {
 	 
 	 private Label label;
 	
-	public GameOverHud(Viewport viewport, OrthographicCamera cam, final TextureAtlas atlas, final GameStateManager gsm, float distance, final Sound click){
+	public GameOverHud(Viewport viewport, OrthographicCamera cam, final TextureAtlas atlas, final GameStateManager gsm, float distance, final Sound click, final Dificuly dificulty){
 		this.viewport = viewport;
 		this.camera = cam;
 
@@ -54,8 +55,8 @@ public class GameOverHud {
 	     skin = new Skin(atlas);
 	     style = new TextButton.TextButtonStyle();
 	     style.font = font;
-	     style.up = skin.getDrawable("Button");
-	     style.down = skin.getDrawable("Button");
+	     style.up = skin.getDrawable("ButtonOrange");
+	     style.down = skin.getDrawable("ButtonOrangePressed");
 	     
 	     font = new BitmapFont();
 		 label = new Label("GAME OVER!\nScore: \n" + distance, new LabelStyle(font, Color.WHITE));
@@ -64,7 +65,7 @@ public class GameOverHud {
 
 
 	     MenuButton = new TextButton("Main Menu", style);
-	     MenuButton.sizeBy(64,32);
+	     MenuButton.sizeBy(38,20);
 	     MenuButton.setPosition((Application.V_WIDTH*0.5f-MenuButton.getWidth()*0.5f), Application.V_HEIGHT*0.28f-MenuButton.getHeight());
 	     MenuButton.addListener( new ClickListener() {
 	         @Override
@@ -78,7 +79,7 @@ public class GameOverHud {
 	        });
 	     
 	     playButton = new TextButton("RETRY", style);
-	     playButton.sizeBy(64,32);
+	     playButton.sizeBy(40,20);
 	     playButton.setPosition((Application.V_WIDTH*0.5f-playButton.getWidth()*0.5f), Application.V_HEIGHT*0.55f-playButton.getHeight());
 	     playButton.addListener( new ClickListener() {
 	         @Override
@@ -86,7 +87,7 @@ public class GameOverHud {
 	             System.out.println("PLAY!!");
 	             pressed = 1;
 	             click.play();
-	             gsm.set(new PlayState(gsm, atlas));
+	             gsm.set(new PlayState(gsm, atlas, dificulty));
 	            }
 	        });
 	     stage.addActor(MenuButton);

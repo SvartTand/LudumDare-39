@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.ludumdare39.Application;
 import com.svarttand.ludumdare39.hud.GameOverHud;
+import com.svarttand.ludumdare39.level.Dificuly;
 
 public class GameOverState extends State{
 
@@ -18,20 +19,17 @@ public class GameOverState extends State{
 	private GameOverHud hud;
 	private TextureRegion backGround;
 	
-	public GameOverState(GameStateManager gsm, TextureAtlas atlas, float distance) {
+	public GameOverState(GameStateManager gsm, TextureAtlas atlas, float distance, Dificuly dificuly) {
 		super(gsm);
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT, cam);
         cam.position.set(Application.V_WIDTH*0.5f, Application.V_HEIGHT*0.5f,0);
         cam.update();
         viewport.apply();
         this.atlas = atlas;
-        hud = new GameOverHud(viewport, cam, atlas, gsm, distance, gsm.assetManager.get("Sound/10.wav", Sound.class));
+        hud = new GameOverHud(viewport, cam, atlas, gsm, distance, gsm.assetManager.get("Sound/10.wav", Sound.class), dificuly);
 		backGround = atlas.findRegion("MainBackGround");
 	}
 	
-	public void playPressed(){
-		gsm.set(new PlayState(gsm, atlas));
-	}
 
 	@Override
 	protected void handleInput(float delta) {

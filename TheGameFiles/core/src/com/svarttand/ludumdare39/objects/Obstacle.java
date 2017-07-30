@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.svarttand.ludumdare39.Application;
 import com.svarttand.ludumdare39.misc.Animation;
+import com.svarttand.ludumdare39.misc.Explosion;
 import com.svarttand.ludumdare39.states.PlayState;
 
 public class Obstacle {
@@ -37,7 +38,7 @@ public class Obstacle {
 		}
 	}
 	
-	public void update(float delta, Player player, Random rn, ArrayList<Obstacle> obstacleList, Sound hurtSound){
+	public void update(float delta, Player player, Random rn, ArrayList<Obstacle> obstacleList, Sound hurtSound, ArrayList<Explosion> explosions, TextureAtlas atlas, Sound explosion){
 		if (type.getAnimation()) {
 			animation.update(delta);
 		}
@@ -45,7 +46,12 @@ public class Obstacle {
 			velocity.y += -2 * delta;
 		}else {
 			if (type.getGravity()) {
+				explosions.add(new Explosion(new Vector2(position.x - ((56-32)*0.5f), position.y - ((56-32)*0.5f)), "StoneExplosion", atlas, 5, 56, 56, false));
+				if (position.x - player.getPosition().x < Application.V_WIDTH*0.5f && position.x - player.getPosition().x >  -Application.V_WIDTH*0.5f ) {
+					explosion.setVolume(explosion.play(), 0.3f);
+				}
 				reposition(rn,obstacleList,player);
+				
 			}
 			velocity.y = 0;
 			//position.y = Player.GROUND;
@@ -64,12 +70,12 @@ public class Obstacle {
 		int n = PlayState.OBSTACLE_GAP - PlayState.MIN_OBSTACLE_GAP + 1;
     	int j = rn.nextInt() % n;
     	if (type.getGravity()) {
-    		setPosition(player.getPosition().x + PlayState.MIN_OBSTACLE_GAP + j);
+    		setPosition(player.getPosition().x + PlayState.MIN_OBSTACLE_GAP + j, rn);
 		}else{
 			if (obstacleList.get(1).equals(this)) {
-				setPosition(obstacleList.get(0).getPosition().x + PlayState.MIN_OBSTACLE_GAP + j);
+				setPosition(obstacleList.get(0).getPosition().x + PlayState.MIN_OBSTACLE_GAP + j, rn);
 			}else{
-				setPosition(obstacleList.get(1).getPosition().x + PlayState.MIN_OBSTACLE_GAP + j);
+				setPosition(obstacleList.get(1).getPosition().x + PlayState.MIN_OBSTACLE_GAP + j, rn);
 			}
 			
 		}
@@ -88,10 +94,15 @@ public class Obstacle {
 		return bounds;
 	}
 	
-	public void setPosition(float position){
+	public void setPosition(float position, Random rn){
 		if (type.getGravity()) {
 			this.position.y = Application.V_HEIGHT;
 			velocity.y = 0;
+		}
+		if (type.getMoving() < 0) {
+			int n = (int) (type.getMoving() - (type.getMoving()*0.5f) - 1);
+	    	int j = rn.nextInt() % n;
+			velocity.x = (type.getMoving()*0.5f)+ j;
 		}
 		this.position.x = position;
 		bounds.x = position;

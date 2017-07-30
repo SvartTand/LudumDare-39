@@ -12,13 +12,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.ludumdare39.Application;
 import com.svarttand.ludumdare39.hud.PlayHud;
-import com.svarttand.ludumdare39.level.Ground;
+import com.svarttand.ludumdare39.level.Dificuly;
+import com.svarttand.ludumdare39.misc.Explosion;
 import com.svarttand.ludumdare39.misc.SoundLoops;
 import com.svarttand.ludumdare39.objects.Obstacle;
 import com.svarttand.ludumdare39.objects.ObstacleEnum;
@@ -35,17 +35,18 @@ public class PlayState extends State{
 	
 	private Player player;
 	
-	private ArrayList<Ground> groundList;
 	private ArrayList<Obstacle> obstacleList;
 	
 	private TextureRegion backGround1;
 	private TextureRegion backGround2;
+	private TextureRegion backGroundExtra;
 	
 	private TextureRegion city;
 	private TextureRegion power;
 	private TextureRegion field;
 	private float bg1Pos;
 	private float bg2Pos;
+	private float bgEPos;
 
 	private Random rn;
 	private PlayHud hud;
@@ -56,9 +57,14 @@ public class PlayState extends State{
 	
 	private SoundLoops soundLoops;
 	
-	public PlayState(GameStateManager gsm, TextureAtlas atlas) {
+	private ArrayList<Explosion> explosions;
+	
+	private Dificuly dificuly;
+	
+	public PlayState(GameStateManager gsm, TextureAtlas atlas, Dificuly dificuly) {
 		super(gsm);
 		
+		this.dificuly = dificuly;
 		player = new Player(atlas);
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT, cam);
 		cam.position.x = player.getPosition().x;
@@ -79,6 +85,10 @@ public class PlayState extends State{
         bg1Pos = 0;
         backGround2 = city;
         bg2Pos = backGround2.getRegionWidth();
+        backGroundExtra = atlas.findRegion("Stage");
+        bgEPos = bg1Pos - backGroundExtra.getRegionWidth();
+        
+        explosions = new ArrayList<Explosion>();
         
         audioList = new ArrayList<Sound>();
         musicList = new ArrayList<Music>();
@@ -92,19 +102,19 @@ public class PlayState extends State{
 		}
         soundLoops = new SoundLoops(audioList, musicList);
         
-        groundList = new ArrayList<Ground>();
         obstacleList = new ArrayList<Obstacle>();
     	rn = new Random();
-        for (int i = 0; i < 6; i++) {
+    	int amount = dificuly.getBlue() + dificuly.getRed() + dificuly.getStones();
+        for (int i = 0; i < amount; i++) {
 
         	int n = OBSTACLE_GAP - MIN_OBSTACLE_GAP + 1;
         	int j = rn.nextInt() % n;
-        	if (i <3) {
-        		obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), player.GROUND + Application.V_HEIGHT), ObstacleEnum.STONE, rn, atlas));
-			}else if(i<5){
-				obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), player.GROUND), ObstacleEnum.MOVING_CAR, rn,atlas));
+        	if (i <dificuly.getStones()) {
+        		obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), Player.GROUND + Application.V_HEIGHT), ObstacleEnum.STONE, rn, atlas));
+			}else if(i<dificuly.getStones() + dificuly.getBlue()){
+				obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), Player.GROUND), ObstacleEnum.MOVING_CAR, rn,atlas));
 			}else{
-				obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), player.GROUND), ObstacleEnum.CAR, rn, atlas));
+				obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), Player.GROUND), ObstacleEnum.CAR, rn, atlas));
 			}
 			
 		}
@@ -141,8 +151,15 @@ public class PlayState extends State{
 
 	@Override
 	public void update(float delta) {
+		for (int i = 0; i < explosions.size(); i++) {
+			if (!explosions.get(i).update(delta)) {
+				explosions.remove(i);
+			}
+			
+		}
+		
 		handleInput(delta);
-		player.update(delta, obstacleList);
+		player.update(delta, obstacleList, explosions, atlas);
 		cam.position.x = player.getPosition().x;
 		hud.update(((int)player.getPosition().x-300)/10, player.getHp());
 		//cam.position.y = player.getPosition().y;
@@ -153,7 +170,7 @@ public class PlayState extends State{
 //			}
 //		}
 		for (int i = 0; i < obstacleList.size(); i++) {
-			obstacleList.get(i).update(delta,player,rn,obstacleList, audioList.get(2));
+			obstacleList.get(i).update(delta,player,rn,obstacleList, audioList.get(2),explosions, atlas, audioList.get(3));
 			if (cam.position.x - (cam.viewportWidth/2) > obstacleList.get(i).getPosition().x + obstacleList.get(i).getBounds().width){
 				obstacleList.get(i).reposition(rn, obstacleList, player);
 			}
@@ -161,36 +178,38 @@ public class PlayState extends State{
 		
 		if (cam.position.x - (cam.viewportWidth/2) > bg1Pos + backGround1.getRegionWidth()){
 			
-			if (bg1Pos >= 5000) {
+			if (bg1Pos >= 3000) {
 				bg1Pos += backGround1.getRegionWidth() + backGround2.getRegionWidth();
 				backGround1 = field;
 				
 			}else{
 				bg1Pos += backGround1.getRegionWidth() + backGround2.getRegionWidth();
 			}
-			System.out.println(bg1Pos + ", " + bg2Pos);
+			
+			bgEPos = bg2Pos - backGroundExtra.getRegionWidth();
 		}
 		if (cam.position.x - (cam.viewportWidth/2) > bg2Pos + backGround2.getRegionWidth()){
 			
-			if (bg2Pos > 6000) {
+			if (bg2Pos > 3000) {
 				backGround2 = field;
 				
 			}
-			if (bg2Pos >= 5000 && bg2Pos <= 6000) {
+			if (bg2Pos >= 2500 && bg2Pos <= 3000) {
 				backGround2 = power;
 				System.out.println("power");
 				bg2Pos += city.getRegionWidth() + backGround1.getRegionWidth();
 			}else{
 				bg2Pos += backGround2.getRegionWidth() + backGround1.getRegionWidth();
 			}
-			System.out.println(bg1Pos + ", " + bg2Pos);
+			bgEPos = bg1Pos - backGroundExtra.getRegionWidth();
+			
 			
 		}
 		
 		soundLoops.update(player.getPosition(), delta, player.getVelocity());
 		
 		if (player.getHp()<= 0) {
-			gsm.set(new GameOverState(gsm, atlas, (player.getPosition().x - 300)/10));
+			gsm.set(new GameOverState(gsm, atlas, (player.getPosition().x - 300)/10, dificuly));
 			soundLoops.dispose();
 		}
 		
@@ -206,6 +225,7 @@ public class PlayState extends State{
         batch.begin();
         batch.draw(backGround1, bg1Pos, 20);
         batch.draw(backGround2, bg2Pos, 20);
+        batch.draw(backGroundExtra, bgEPos, 20);
         for (int i = 0; i < obstacleList.size(); i++) {
         	if (obstacleList.get(i).getType().getAnimation()) {
         		batch.draw(obstacleList.get(i).getFrame(), obstacleList.get(i).getPosition().x, obstacleList.get(i).getPosition().y);
@@ -217,10 +237,13 @@ public class PlayState extends State{
         batch.draw(player.getTexturePath(),
         	player.getPosition().x,
         	player.getPosition().y);
+        for (int i = 0; i < explosions.size(); i++) {
+			batch.draw(atlas.findRegion(explosions.get(i).getTextureName()), explosions.get(i).getPosition().x, explosions.get(i).getPosition().y);
+		}
         
         batch.end();
         
-		hud.render(renderer);
+		hud.render(renderer, player.isHit());
 		renderer.end();
 		hud.getStage().draw();
 	}

@@ -1,7 +1,7 @@
 package com.svarttand.ludumdare39.objects;
 
 public enum ObstacleEnum {
-	CAR("CarObstacle", 32, false, 32, 0, false),
+	CAR("RedCar", 56, false, 32, -160, false),
 	STONE ("Rock", 32, true, 32, 0, false),
 	MOVING_CAR("CarMoving", 56, false, 32, -160, true);
 	

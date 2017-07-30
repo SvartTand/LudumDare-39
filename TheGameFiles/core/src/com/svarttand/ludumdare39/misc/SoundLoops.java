@@ -49,22 +49,22 @@ public class SoundLoops {
 		}
 		
 		if (!isPlayingMusic) {
-			if (position < 5000) {
+			if (position < 2500) {
 				music = musics.get(1);
 				music.play();
-			}else if (position < 10000) {
+			}else if (position < 5500) {
 				music = musics.get(2);
 				music.play();
-			}else if (position < 15000) {
+			}else if (position < 8000) {
 				music = musics.get(3);
 				music.play();
-			}else if (position < 20000) {
+			}else if (position < 12000) {
 				music = musics.get(4);
 				music.play();
-			}else if (position < 25000) {
+			}else if (position < 15000) {
 				music = musics.get(5);
 				music.play();
-			}else if (position < 30000) {
+			}else {
 				music = musics.get(6);
 				music.play();
 			}

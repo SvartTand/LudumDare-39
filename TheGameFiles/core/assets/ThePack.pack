@@ -31,6 +31,13 @@ MainBackGround
   orig: 300, 200
   offset: 0, 0
   index: -1
+Stage
+  rotate: false
+  xy: 655, 109
+  size: 300, 200
+  orig: 300, 200
+  offset: 0, 0
+  index: -1
 Road
   rotate: false
   xy: 1, 7
@@ -47,35 +54,35 @@ StoneExplosion1
   index: -1
 StoneExplosion2
   rotate: false
-  xy: 655, 253
+  xy: 35, 51
   size: 56, 56
   orig: 56, 56
   offset: 0, 0
   index: -1
 StoneExplosion3
   rotate: false
-  xy: 35, 51
+  xy: 955, 397
   size: 56, 56
   orig: 56, 56
   offset: 0, 0
   index: -1
 StoneExplosion4
   rotate: false
-  xy: 955, 397
+  xy: 93, 51
   size: 56, 56
   orig: 56, 56
   offset: 0, 0
   index: -1
 StoneExplosion5
   rotate: false
-  xy: 655, 195
+  xy: 955, 339
   size: 56, 56
   orig: 56, 56
   offset: 0, 0
   index: -1
 StoneExplosion6
   rotate: false
-  xy: 713, 253
+  xy: 151, 51
   size: 56, 56
   orig: 56, 56
   offset: 0, 0
@@ -89,168 +96,231 @@ RoadCity
   index: -1
 CarMoving1
   rotate: false
-  xy: 93, 75
+  xy: 209, 75
   size: 56, 32
   orig: 56, 32
   offset: 0, 0
   index: -1
 CarMoving2
   rotate: false
-  xy: 955, 363
+  xy: 69, 17
   size: 56, 32
   orig: 56, 32
   offset: 0, 0
   index: -1
 CarMoving3
   rotate: false
-  xy: 655, 161
+  xy: 267, 75
   size: 56, 32
   orig: 56, 32
   offset: 0, 0
   index: -1
 CarMoving4
   rotate: false
-  xy: 713, 219
+  xy: 127, 17
   size: 56, 32
   orig: 56, 32
   offset: 0, 0
   index: -1
 RedCar
   rotate: false
-  xy: 771, 277
+  xy: 325, 75
   size: 56, 32
   orig: 56, 32
   offset: 0, 0
   index: -1
+ButtonOrange
+  rotate: false
+  xy: 209, 57
+  size: 64, 16
+  orig: 64, 16
+  offset: 0, 0
+  index: -1
+ButtonOrangePressed
+  rotate: false
+  xy: 383, 91
+  size: 64, 16
+  orig: 64, 16
+  offset: 0, 0
+  index: -1
+Blood1
+  rotate: false
+  xy: 185, 9
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
+Blood2
+  rotate: false
+  xy: 211, 15
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
+Blood3
+  rotate: false
+  xy: 237, 15
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
+Blood4
+  rotate: false
+  xy: 263, 15
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
 CarObstacle
   rotate: false
-  xy: 151, 75
+  xy: 449, 75
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Rock
   rotate: false
-  xy: 955, 329
+  xy: 483, 75
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Ship
   rotate: false
-  xy: 655, 127
+  xy: 517, 75
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
+Blood5
+  rotate: false
+  xy: 551, 67
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
+Blood6
+  rotate: false
+  xy: 577, 67
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
+Blood7
+  rotate: false
+  xy: 603, 67
+  size: 24, 40
+  orig: 24, 40
+  offset: 0, 0
+  index: -1
 ShipRed1
   rotate: false
-  xy: 713, 177
+  xy: 629, 67
   size: 24, 40
   orig: 24, 40
   offset: 0, 0
   index: -1
 ShipRed2
   rotate: false
-  xy: 771, 235
+  xy: 655, 67
   size: 24, 40
   orig: 24, 40
   offset: 0, 0
   index: -1
 ShipRed3
   rotate: false
-  xy: 739, 177
+  xy: 681, 67
   size: 24, 40
   orig: 24, 40
   offset: 0, 0
   index: -1
 ShipRed4
   rotate: false
-  xy: 797, 235
+  xy: 707, 67
   size: 24, 40
   orig: 24, 40
   offset: 0, 0
   index: -1
 ShipRed5
   rotate: false
-  xy: 69, 9
+  xy: 733, 67
   size: 24, 40
   orig: 24, 40
   offset: 0, 0
   index: -1
 Dude
   rotate: false
-  xy: 829, 277
+  xy: 759, 75
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning1
   rotate: false
-  xy: 185, 75
+  xy: 777, 75
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning2
   rotate: false
-  xy: 989, 329
+  xy: 795, 75
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning3
   rotate: false
-  xy: 1007, 329
+  xy: 813, 75
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning4
   rotate: false
-  xy: 689, 127
+  xy: 831, 75
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeRunning5
   rotate: false
-  xy: 823, 243
+  xy: 849, 75
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeStanding1
   rotate: false
-  xy: 847, 277
+  xy: 867, 75
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeStanding2
   rotate: false
-  xy: 203, 75
+  xy: 885, 75
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeStanding3
   rotate: false
-  xy: 841, 243
+  xy: 903, 75
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 DudeStanding4
   rotate: false
-  xy: 865, 277
+  xy: 921, 75
   size: 16, 32
   orig: 16, 32
   offset: 0, 0
   index: -1
 Button
   rotate: false
-  xy: 955, 311
+  xy: 275, 57
   size: 16, 16
   orig: 16, 16
   offset: 0, 0

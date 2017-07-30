@@ -47,13 +47,14 @@ public class PlayHud {
 		this.hp = hp;
 	}
 	
-	public void render(ShapeRenderer renderer){
+	public void render(ShapeRenderer renderer, boolean isHit){
 		renderer.setProjectionMatrix(camera.combined);
 		renderer.begin(ShapeType.Filled);
 		renderer.setColor(Color.BLACK);
 		renderer.rect(6, 6, Player.MAX_HP, 15);
 		renderer.setColor(Color.FIREBRICK);
 		renderer.rect(6, 6, hp, 15);
+		
 		
 		
 		
