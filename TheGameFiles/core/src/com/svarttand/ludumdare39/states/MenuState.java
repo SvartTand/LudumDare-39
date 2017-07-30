@@ -14,7 +14,6 @@ import com.svarttand.ludumdare39.hud.MenuHud;
 public class MenuState extends State{
 	
 	private Viewport viewport;
-	private TextureAtlas atlas;
 	private MenuHud hud;
 	private TextureRegion backGround;
 
@@ -24,7 +23,6 @@ public class MenuState extends State{
         cam.position.set(Application.V_WIDTH*0.5f, Application.V_HEIGHT*0.5f,0);
         cam.update();
         viewport.apply();
-        this.atlas = atlas;
         hud = new MenuHud(viewport, cam, atlas, gsm, gsm.assetManager.get("Sound/10.wav", Sound.class));
 		backGround = atlas.findRegion("MainMenuBackGround");
 	}

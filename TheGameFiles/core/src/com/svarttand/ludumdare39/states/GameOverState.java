@@ -15,7 +15,6 @@ import com.svarttand.ludumdare39.level.Dificuly;
 public class GameOverState extends State{
 
 	private Viewport viewport;
-	private TextureAtlas atlas;
 	private GameOverHud hud;
 	private TextureRegion backGround;
 	
@@ -25,7 +24,6 @@ public class GameOverState extends State{
         cam.position.set(Application.V_WIDTH*0.5f, Application.V_HEIGHT*0.5f,0);
         cam.update();
         viewport.apply();
-        this.atlas = atlas;
         hud = new GameOverHud(viewport, cam, atlas, gsm, distance, gsm.assetManager.get("Sound/10.wav", Sound.class), dificuly);
 		backGround = atlas.findRegion("MainBackGround");
 	}

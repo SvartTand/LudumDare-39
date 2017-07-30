@@ -19,7 +19,6 @@ import com.svarttand.ludumdare39.states.PlayState;
 
 public class MenuHud {
 	
-	private OrthographicCamera camera;
 	private Stage stage;
 	private Viewport viewport;
 
@@ -40,7 +39,6 @@ public class MenuHud {
 	
 	public MenuHud(Viewport viewport, OrthographicCamera cam, final TextureAtlas atlas, final GameStateManager gsm, final Sound clickSound){
 		this.viewport = viewport;
-		this.camera = cam;
 
 		stage = new Stage(viewport);
 		

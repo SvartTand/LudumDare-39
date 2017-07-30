@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Circle;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.svarttand.ludumdare39.misc.Animation;
@@ -27,9 +25,7 @@ public class Player {
 	
 	private Vector2 velocity;
 	private Vector2 position;
-	private Vector2 angles;
 	private float rotation;
-	private float mass;
 	
 	private float power;
 	private float hp;
@@ -48,12 +44,10 @@ public class Player {
 		
 		velocity = new Vector2(0,0);
 		position = new Vector2(300,GROUND);
-		angles = new Vector2(0,0);
 		rotation = 0;
 		power = MAX_POWER;
 		hp = MAX_HP;	
 		bounds = new Rectangle(50, 50, 16, 32);
-		mass = 10;
 		standAnimation = new Animation("DudeStanding", 4, 0.5f, atlas);
 		runAnimation = new Animation("DudeRunning", 5, 0.5f, atlas);
 		currentAnimation = standAnimation;

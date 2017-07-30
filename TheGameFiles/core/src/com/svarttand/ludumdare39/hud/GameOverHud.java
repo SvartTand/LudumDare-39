@@ -17,14 +17,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.ludumdare39.Application;
 import com.svarttand.ludumdare39.level.Dificuly;
-import com.svarttand.ludumdare39.states.GameOverState;
 import com.svarttand.ludumdare39.states.GameStateManager;
 import com.svarttand.ludumdare39.states.MenuState;
 import com.svarttand.ludumdare39.states.PlayState;
 
 public class GameOverHud {
 	
-	private OrthographicCamera camera;
 	private Stage stage;
 	private Viewport viewport;
 
@@ -42,7 +40,6 @@ public class GameOverHud {
 	
 	public GameOverHud(Viewport viewport, OrthographicCamera cam, final TextureAtlas atlas, final GameStateManager gsm, float distance, final Sound click, final Dificuly dificulty){
 		this.viewport = viewport;
-		this.camera = cam;
 
 		stage = new Stage(viewport);
 		

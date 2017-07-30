@@ -9,7 +9,6 @@ import com.svarttand.ludumdare39.objects.Player;
 
 public class SoundLoops {
 	
-	private ArrayList<Sound> library;
 	private Music music;
 	private Music footsteps;
 	
@@ -17,7 +16,6 @@ public class SoundLoops {
 	private boolean isPlayingMusic;
 	
 	public SoundLoops(ArrayList<Sound> library, ArrayList<Music> musics){
-		this.library = library;
 		isPlayingMusic = false;
 		footsteps = musics.get(0);
 		this.musics = musics;
