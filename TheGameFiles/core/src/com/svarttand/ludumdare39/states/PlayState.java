@@ -135,7 +135,7 @@ public class PlayState extends State{
 	protected void handleInput(float delta) {
 		
 		
-		if (Gdx.input.isKeyPressed(Keys.UP)) {
+		if (Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.SPACE)) {
 			player.upPressed(delta, audioList.get(0));
 			
 		}
@@ -143,11 +143,11 @@ public class PlayState extends State{
 			player.downPressed(delta);
 			
 		}
-		if (Gdx.input.isKeyPressed(Keys.LEFT)) {
+		if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A)) {
 			player.leftPressed(delta);
 			
 		}
-		if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
+		if (Gdx.input.isKeyPressed(Keys.RIGHT)|| Gdx.input.isKeyPressed(Keys.D)) {
 			player.rightPressed(delta);
 			
 		}

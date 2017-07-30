@@ -2,14 +2,17 @@ package com.svarttand.ludumdare39.hud;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.ludumdare39.Application;
@@ -35,6 +38,9 @@ public class MenuHud {
 	 private Button hardButton;
 	 private Button insaneButton;
 	 
+	 private Label text;
+	 
+	 
 	 private Dificuly selected;
 	
 	public MenuHud(Viewport viewport, OrthographicCamera cam, final TextureAtlas atlas, final GameStateManager gsm, final Sound clickSound){
@@ -54,7 +60,14 @@ public class MenuHud {
 	     style.up = skin.getDrawable("ButtonOrange");
 	     style.down = skin.getDrawable("ButtonOrangePressed");
 	     style.checked = skin.getDrawable("ButtonOrangePressed");
-
+	     
+	     text = new Label("Made by Albert Lindberg in less \nthan 48 hours for Ludum dare 39", new LabelStyle(font, Color.ORANGE));
+	     System.out.println(text.getWidth());
+	     text.setFontScale(0.8f);
+	     System.out.println(text.getWidth());
+	     text.setPosition(5, 5);
+	     stage.addActor(text);
+	     
 
 	     playButton = new TextButton("PLAY", style);
 	     playButton.setPosition((Application.V_WIDTH*0.76f-playButton.getWidth()*0.5f), Application.V_HEIGHT*0.92f-playButton.getHeight());
