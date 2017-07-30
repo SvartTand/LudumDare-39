@@ -1,6 +1,7 @@
 package com.svarttand.ludumdare39.hud;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -38,7 +39,7 @@ public class GameOverHud {
 	 
 	 private Label label;
 	
-	public GameOverHud(Viewport viewport, OrthographicCamera cam, final TextureAtlas atlas, final GameStateManager gsm, float distance){
+	public GameOverHud(Viewport viewport, OrthographicCamera cam, final TextureAtlas atlas, final GameStateManager gsm, float distance, final Sound click){
 		this.viewport = viewport;
 		this.camera = cam;
 
@@ -70,7 +71,9 @@ public class GameOverHud {
 	         public void clicked(InputEvent event, float x, float y) {
 	             System.out.println("PLAY!!");
 	             pressed = 1;
+	             click.play();
 	             gsm.set(new MenuState(gsm, atlas));
+	             
 	            }
 	        });
 	     
@@ -82,6 +85,7 @@ public class GameOverHud {
 	         public void clicked(InputEvent event, float x, float y) {
 	             System.out.println("PLAY!!");
 	             pressed = 1;
+	             click.play();
 	             gsm.set(new PlayState(gsm, atlas));
 	            }
 	        });

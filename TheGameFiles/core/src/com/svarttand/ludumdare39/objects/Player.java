@@ -22,6 +22,7 @@ public class Player {
 	private static final float ACCELERATION = 300;
 	private static final float FRICTION = 150;
 	private static final float GRAVITY = 400;
+	private static final float TIME = 0.5f;
 	
 	private Vector2 velocity;
 	private Vector2 position;
@@ -38,6 +39,8 @@ public class Player {
 	private Animation runAnimation;
 	private Animation currentAnimation;
 	
+	private float timeLoop;
+	
 	public Player(TextureAtlas atlas){
 		
 		velocity = new Vector2(0,0);
@@ -51,11 +54,17 @@ public class Player {
 		standAnimation = new Animation("DudeStanding", 4, 0.5f, atlas);
 		runAnimation = new Animation("DudeRunning", 5, 0.5f, atlas);
 		currentAnimation = standAnimation;
+		timeLoop = 0;
 		
 	}
 	
-	public void takeDmg(){
+	public void takeDmg(Sound hurtSound){
+		if (timeLoop >= TIME) {
+			hurtSound.play();
+			timeLoop = 0;
+		}
 		hp -= 0.5;
+		
 	}
 	
 	public float getHp(){
@@ -84,7 +93,7 @@ public class Player {
 
 	public void update(float delta, ArrayList<Obstacle> obstacles){
 		
-		
+		timeLoop += delta;
 		currentAnimation.update(delta);
 		if (velocity.x <= 10 && velocity.x >= -10) {
 			currentAnimation = standAnimation;

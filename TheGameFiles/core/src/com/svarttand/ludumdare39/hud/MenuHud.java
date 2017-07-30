@@ -1,6 +1,7 @@
 package com.svarttand.ludumdare39.hud;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -32,7 +33,7 @@ public class MenuHud {
 	 
 	 private int pressed;
 	
-	public MenuHud(Viewport viewport, OrthographicCamera cam, TextureAtlas atlas, final MenuState state){
+	public MenuHud(Viewport viewport, OrthographicCamera cam, final TextureAtlas atlas, final GameStateManager gsm, final Sound clickSound){
 		this.viewport = viewport;
 		this.camera = cam;
 
@@ -58,8 +59,9 @@ public class MenuHud {
 	         @Override
 	         public void clicked(InputEvent event, float x, float y) {
 	             System.out.println("PLAY!!");
-	             pressed = 1;
-	             state.playPressed();
+	             clickSound.play();
+	             gsm.set(new PlayState(gsm, atlas));
+
 	            }
 	        });
 	     

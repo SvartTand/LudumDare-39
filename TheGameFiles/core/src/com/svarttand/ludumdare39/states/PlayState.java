@@ -95,14 +95,16 @@ public class PlayState extends State{
         groundList = new ArrayList<Ground>();
         obstacleList = new ArrayList<Obstacle>();
     	rn = new Random();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 6; i++) {
 
         	int n = OBSTACLE_GAP - MIN_OBSTACLE_GAP + 1;
         	int j = rn.nextInt() % n;
-        	if (i <2) {
-        		obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), player.GROUND + Application.V_HEIGHT), ObstacleEnum.STONE));
+        	if (i <3) {
+        		obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), player.GROUND + Application.V_HEIGHT), ObstacleEnum.STONE, rn, atlas));
+			}else if(i<5){
+				obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), player.GROUND), ObstacleEnum.MOVING_CAR, rn,atlas));
 			}else{
-				obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), player.GROUND), ObstacleEnum.CAR));
+				obstacleList.add(new Obstacle(new Vector2(i  * (MIN_OBSTACLE_GAP + j), player.GROUND), ObstacleEnum.CAR, rn, atlas));
 			}
 			
 		}
@@ -151,41 +153,47 @@ public class PlayState extends State{
 //			}
 //		}
 		for (int i = 0; i < obstacleList.size(); i++) {
-			obstacleList.get(i).update(delta,player,rn,obstacleList);
+			obstacleList.get(i).update(delta,player,rn,obstacleList, audioList.get(2));
 			if (cam.position.x - (cam.viewportWidth/2) > obstacleList.get(i).getPosition().x + obstacleList.get(i).getBounds().width){
 				obstacleList.get(i).reposition(rn, obstacleList, player);
-				System.out.println("It changed" + obstacleList.size());
 			}
 		}
-		System.out.println(bg1Pos + ", " + bg2Pos);
+		
 		if (cam.position.x - (cam.viewportWidth/2) > bg1Pos + backGround1.getRegionWidth()){
 			
 			if (bg1Pos >= 5000) {
+				bg1Pos += backGround1.getRegionWidth() + backGround2.getRegionWidth();
 				backGround1 = field;
-				bg1Pos += backGround1.getRegionWidth() + backGround2.getRegionWidth()-250;
+				
 			}else{
 				bg1Pos += backGround1.getRegionWidth() + backGround2.getRegionWidth();
 			}
-			
+			System.out.println(bg1Pos + ", " + bg2Pos);
 		}
 		if (cam.position.x - (cam.viewportWidth/2) > bg2Pos + backGround2.getRegionWidth()){
 			
-			if (bg2Pos >= 5000 && bg2Pos <= 6700) {
-				backGround2 = power;
-			}
 			if (bg2Pos > 6000) {
 				backGround2 = field;
+				
 			}
-			bg2Pos += backGround2.getRegionWidth() + backGround1.getRegionWidth();
+			if (bg2Pos >= 5000 && bg2Pos <= 6000) {
+				backGround2 = power;
+				System.out.println("power");
+				bg2Pos += city.getRegionWidth() + backGround1.getRegionWidth();
+			}else{
+				bg2Pos += backGround2.getRegionWidth() + backGround1.getRegionWidth();
+			}
+			System.out.println(bg1Pos + ", " + bg2Pos);
+			
 		}
 		
-		
+		soundLoops.update(player.getPosition(), delta, player.getVelocity());
 		
 		if (player.getHp()<= 0) {
 			gsm.set(new GameOverState(gsm, atlas, (player.getPosition().x - 300)/10));
 			soundLoops.dispose();
 		}
-		soundLoops.update(player.getPosition(), delta, player.getVelocity());
+		
 		
 	}
 
@@ -198,11 +206,13 @@ public class PlayState extends State{
         batch.begin();
         batch.draw(backGround1, bg1Pos, 20);
         batch.draw(backGround2, bg2Pos, 20);
-        for (int i = 0; i < groundList.size(); i++) {
-			batch.draw(atlas.findRegion(groundList.get(i).getPath()), groundList.get(i).getPosition().x, groundList.get(i).getPosition().y);
-		}
         for (int i = 0; i < obstacleList.size(); i++) {
-			batch.draw(atlas.findRegion(obstacleList.get(i).getPath()), obstacleList.get(i).getPosition().x, obstacleList.get(i).getPosition().y);
+        	if (obstacleList.get(i).getType().getAnimation()) {
+        		batch.draw(obstacleList.get(i).getFrame(), obstacleList.get(i).getPosition().x, obstacleList.get(i).getPosition().y);
+			}else{
+				batch.draw(atlas.findRegion(obstacleList.get(i).getPath()), obstacleList.get(i).getPosition().x, obstacleList.get(i).getPosition().y);
+			}
+			
 		}
         batch.draw(player.getTexturePath(),
         	player.getPosition().x,
