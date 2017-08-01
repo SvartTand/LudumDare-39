@@ -25,6 +25,7 @@ public class MenuState extends State{
         viewport.apply();
         hud = new MenuHud(viewport, cam, atlas, gsm, gsm.assetManager.get("Sound/10.wav", Sound.class));
 		backGround = atlas.findRegion("MainMenuBackGround");
+		resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	}
 	
 

@@ -26,6 +26,7 @@ public class GameOverState extends State{
         viewport.apply();
         hud = new GameOverHud(viewport, cam, atlas, gsm, distance, gsm.assetManager.get("Sound/10.wav", Sound.class), dificuly);
 		backGround = atlas.findRegion("MainBackGround");
+		resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	}
 	
 

@@ -105,7 +105,7 @@ public class PlayState extends State{
 			}
 			
 		}
-        soundLoops = new SoundLoops(audioList, musicList);
+        soundLoops = new SoundLoops(musicList);
         
         obstacleList = new ArrayList<Obstacle>();
     	rn = new Random();
@@ -127,7 +127,7 @@ public class PlayState extends State{
 //        for (int i = 0; i < (GROUND_SIZE*2 + Application.V_WIDTH)/GROUND_SIZE; i++) {
 //			groundList.add(new Ground(new Vector2(i*GROUND_SIZE, 50-GROUND_SIZE), "RoadCity"));
 //		}
-        resize(600, 400);
+        resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         
 	}
 
@@ -215,7 +215,7 @@ public class PlayState extends State{
 		
 		if (player.getHp()<= 0) {
 			gsm.set(new GameOverState(gsm, atlas, (player.getPosition().x - 300)/10, dificuly));
-			soundLoops.dispose();
+			
 		}
 		
 		
@@ -255,7 +255,8 @@ public class PlayState extends State{
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
+		hud.dispose();
+		soundLoops.dispose();
 		
 	}
 

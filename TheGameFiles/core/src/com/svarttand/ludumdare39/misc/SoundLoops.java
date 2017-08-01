@@ -3,7 +3,6 @@ package com.svarttand.ludumdare39.misc;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Vector2;
 import com.svarttand.ludumdare39.objects.Player;
 
@@ -15,7 +14,7 @@ public class SoundLoops {
 	private ArrayList<Music> musics;
 	private boolean isPlayingMusic;
 	
-	public SoundLoops(ArrayList<Sound> library, ArrayList<Music> musics){
+	public SoundLoops(ArrayList<Music> musics){
 		isPlayingMusic = false;
 		footsteps = musics.get(0);
 		this.musics = musics;
@@ -75,12 +74,7 @@ public class SoundLoops {
 	public void dispose() {
 		music.stop();
 		footsteps.stop();
-//		for (int i = 0; i < musics.size(); i++) {
-//			musics.get(i).dispose();
-//		}
-//		for (int i = 0; i < library.size(); i++) {
-//			library.get(i).dispose();
-//		}
+		
 		
 	}
 	
